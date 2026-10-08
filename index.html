@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star System Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="panel sidebar">
+        <header>
+          <p class="eyebrow">Procedural Universe</p>
+          <h1>Star System Generator</h1>
+        </header>
+
+        <div class="controls">
+          <label>
+            <span>Seed</span>
+            <input id="seedInput" type="number" value="42" min="1" step="1" />
+          </label>
+
+          <label>
+            <span>Planet count</span>
+            <input id="planetCountInput" type="range" min="3" max="10" value="6" />
+            <strong id="planetCountValue">6</strong>
+          </label>
+
+          <label>
+            <span>Orbit speed</span>
+            <input id="orbitSpeedInput" type="range" min="0.2" max="2.5" step="0.1" value="0.8" />
+            <strong id="orbitSpeedValue">0.8x</strong>
+          </label>
+
+          <div class="button-row">
+            <button id="generateBtn" class="primary">Generate System</button>
+            <button id="randomBtn" class="secondary">Random Seed</button>
+            <button id="pauseBtn" class="secondary">Pause</button>
+          </div>
+
+          <button id="terrestrialBtn" class="secondary full-width">Ensure Terrestrial World</button>
+
+          <div class="button-row compact">
+            <button id="toggle3DBtn" class="secondary">3D View</button>
+            <button id="galaxyBtn" class="secondary">Galaxy Map</button>
+          </div>
+
+          <div class="button-row compact">
+            <button id="savePresetBtn" class="secondary">Save Preset</button>
+            <button id="exportBtn" class="secondary">Export JSON</button>
+          </div>
+
+          <label>
+            <span>Preset library</span>
+            <select id="presetSelect">
+              <option value="">No preset loaded</option>
+            </select>
+          </label>
+        </div>
+
+        <section class="summary-box combined-overview">
+          <div class="combined-grid">
+            <div class="info-group">
+              <h3>System Summary</h3>
+              <dl id="systemSummary"></dl>
+            </div>
+            <div class="info-group">
+              <h3>Stellar Profile</h3>
+              <dl id="stellarMetrics"></dl>
+            </div>
+          </div>
+        </section>
+
+        <section class="detail-box">
+          <h2>Selected Planet</h2>
+          <div id="planetFocus">
+            <p>Click a planet in the system to inspect it.</p>
+          </div>
+        </section>
+
+        <section class="card-box">
+          <h2>Planet Data Cards</h2>
+          <div id="planetCards" class="planet-card-grid"></div>
+        </section>
+      </aside>
+
+      <main class="panel viewport">
+        <canvas id="systemCanvas" width="900" height="620" aria-label="Generated star system"></canvas>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
